@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Space+Mono:wght@400;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Sora", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-green: #10b981;
+  --color-brand-emerald: #059669;
+  --color-brand-glow: rgba(16, 185, 129, 0.15);
+  --color-brand-glow-strong: rgba(16, 185, 129, 0.3);
+}
+
+/* Custom styles for animations and premium effects */
+@layer utilities {
+  .glassmorphism {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .glassmorphism-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .glassmorphism-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .glassmorphism-card-light {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(241, 245, 249, 0.9) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+  }
+
+  .border-glow {
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+  }
+  
+  .glow-green {
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.15);
+  }
+}
+
+/* Smooth scroll behavior and overscroll prevention */
+html, body {
+  scroll-behavior: smooth;
+  overscroll-behavior-y: none; /* Prevents pull-to-refresh and rubber-band bounce */
+  overscroll-behavior-x: none; /* Prevents history swipe back/forward gestures */
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Base style resets */
+body {
+  @apply font-sans antialiased overflow-x-hidden;
+  background-color: #030712;
+  color: #f3f4f6;
+  font-weight: 600; /* Made thicker (from 500 to 600) */
+  font-size: 1.05rem; /* Made bigger */
+}
+
+/* Enforce bold headings with display typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Override font weight utilities to make all typography bolder/thicker */
+.font-light {
+  font-weight: 600 !important; /* Made thicker (from 500 to 600) */
+}
+
+.font-normal {
+  font-weight: 600 !important; /* Made thicker (from 500 to 600) */
+}
+
+.font-medium {
+  font-weight: 700 !important; /* Made thicker (from 600 to 700) */
+}
+
+.font-semibold {
+  font-weight: 800 !important; /* Made thicker (from 700 to 800) */
+}
+
+.font-bold {
+  font-weight: 800 !important;
+}
+
+.font-extrabold {
+  font-weight: 800 !important;
+}
+
+/* Globally scale up all standard text sizing classes */
+.text-xs {
+  font-size: 0.85rem !important; /* scaled up from 0.75rem */
+}
+.text-sm {
+  font-size: 1rem !important; /* scaled up from 0.875rem */
+}
+.text-base {
+  font-size: 1.125rem !important; /* scaled up from 1rem */
+}
+.text-lg {
+  font-size: 1.25rem !important; /* scaled up from 1.125rem */
+}
+.text-xl {
+  font-size: 1.4rem !important; /* scaled up from 1.25rem */
+}
+.text-2xl {
+  font-size: 1.7rem !important; /* scaled up from 1.5rem */
+}
+.text-3xl {
+  font-size: 2.15rem !important; /* scaled up from 1.875rem */
+}
+.text-4xl {
+  font-size: 2.65rem !important; /* scaled up from 2.25rem */
+}
+.text-5xl {
+  font-size: 3.5rem !important; /* scaled up from 3rem */
+}
+.text-6xl {
+  font-size: 4.5rem !important; /* scaled up from 3.75rem */
+}
+.text-7xl {
+  font-size: 5.5rem !important; /* scaled up from 4.5rem */
+}
+
+/* Custom radial gradient background masks */
+.bg-radial-gradient-dark {
+  background: radial-gradient(circle at center, transparent 20%, rgba(5, 5, 5, 0.15) 50%, rgba(5, 5, 5, 0.75) 85%, #050505 100%);
+}
+
+.bg-radial-gradient-light {
+  background: radial-gradient(circle at center, transparent 20%, rgba(248, 250, 252, 0.15) 50%, rgba(248, 250, 252, 0.75) 85%, #f8fafc 100%);
+}
+
+/* Ticker Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.33333%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Fade-in transitions */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slow floating background elements keyframes */
+@keyframes bgFloat1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(4deg); }
+}
+
+@keyframes bgFloat2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(20px) rotate(-6deg); }
+}
+
+@keyframes bgFloat3 {
+  0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+  50% { transform: translateY(-15px) scale(1.08) rotate(3deg); }
+}
+
+.animate-float-1 {
+  animation: bgFloat1 14s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: bgFloat2 18s ease-in-out infinite;
+}
+
+.animate-float-3 {
+  animation: bgFloat3 12s ease-in-out infinite;
+}
+
+/* Floating Message Support Button */
+.floating-message-btn {
+  position: fixed;
+  bottom: 68px; /* Lowered nicely toward the bottom */
+  right: 20px;
+  width: 42px;
+  height: 42px;
+
+  /* 3D Glass Layering & Gradients */
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 255, 170, 0.25) 0%, 
+    rgba(0, 180, 110, 0.05) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  /* Multi-layered borders for 3D bezel edge */
+  border: 1px solid rgba(255, 255, 170, 0.35); /* Top highlight border */
+  border-bottom: 1px solid rgba(0, 120, 70, 0.4); /* Bottom shadow border */
+  
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 3D Depth Shadows (Deep drop shadow + inner glow) */
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.6),        /* Deep canvas shadow */
+    0 4px 12px rgba(0, 229, 153, 0.25),          /* Green ambient glow */
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),    /* Top inner specular highlight */
+    inset 0 -2px 4px rgba(0, 100, 50, 0.3);      /* Bottom inner depth shadow */
+
+  color: #00ffaa;
+  cursor: pointer;
+  z-index: 1000;
+  animation: floatAnimation 3.5s ease-in-out infinite;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Smooth 3D Floating Bob */
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1deg); /* Tiny natural tilt */
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.floating-message-btn:hover {
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 255, 170, 0.35) 0%, 
+    rgba(0, 180, 110, 0.15) 100%
+  );
+  transform: scale(1.08) translateY(-4px);
+  box-shadow: 
+    0 14px 30px -4px rgba(0, 0, 0, 0.7),
+    0 6px 16px rgba(0, 229, 153, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(0, 100, 50, 0.4);
+}
+
